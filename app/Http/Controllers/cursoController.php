@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\curso;
 use Illuminate\Http\Request;
+use App\Http\Requests\storecursosRequest;
+
 
 class cursoController extends Controller
 {
@@ -38,7 +40,7 @@ class cursoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storecursosRequest $request)
     {
         //con el metodo all() veo toda la información
         //return $request->all();
@@ -80,7 +82,8 @@ class cursoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cursito = curso::find($id);
+        return view('cursos.edit',compact('cursito'));
     }
 
     /**
@@ -92,7 +95,13 @@ class cursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cursito = curso::find($id);
+        $cursito->fill($request->except('imagen'));
+        if ($request->hasFile('imagen')){
+            $cursito->imagen = $request->file('imagen')->store('public');
+        }
+        $cursito -> save();
+        return'arriba españa';
     }
 
     /**

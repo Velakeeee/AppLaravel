@@ -6,6 +6,7 @@ use App\Http\Controllers\miprimerController;
 use App\Http\Controllers\heladosController;
 use App\Http\Controllers\precioController;
 use App\Http\Controllers\cursoController;
+use App\Http\Controllers\docenteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +53,4 @@ Route::get('abichuelo4/{precio}',[precioController::class,'precio']);
 Route::get('iva/{nom}/{ps}',[precioController::class,'getiva']);
 
 Route::resource('cursos',cursoController::class);
+Route::resource('docentes',docenteController::class);

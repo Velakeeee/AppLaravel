@@ -8,7 +8,7 @@
 <h3>Editar curso</h3>
 <form action="/docentes/{{$doc->id}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
-   
+
     @csrf
     <div class="form-group">
         <label for="nombre">Nombre del docente</label>
@@ -31,7 +31,7 @@
         <label for="cursoAsociado">Curso Asociado</label>
         <input name="cursoAsociado" value="{{$doc->cursoAsociado}}" type="textarea" id="cursoAsociado" class="form-control">
     </div>
-    <button type="submit" class="btn btn-primary">Ingresar</button>
+    <button type="submit" class="btn btn-primary">Modificar</button>
 </form>
 
 

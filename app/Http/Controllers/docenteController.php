@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\docente;
 use Illuminate\Http\Request;
+use App\Http\Requests\storedocenteRequest;
 
 class docenteController extends Controller
 {
@@ -33,14 +34,14 @@ class docenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storedocenteRequest $request)
     {
         $doc = new docente();
         //esto me permitira manipular la tabla
         $doc->nombre = $request->input('nombre');
         $doc->apellido = $request->input('apellido');
         if ($request->hasFile('foto')){
-            $doc->foto = $request->file('foto')->store('public');
+            $doc->foto = $request->file('foto')->store('public/docentes');
         }
         $doc->titulo = $request->input('titulo');
         $doc->cursoAsociado = $request->input('cursoAsociado');
@@ -100,6 +101,15 @@ class docenteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $doc = docente::find($id);
+
+        $urlImagenBD = $doc->foto;
+        //return $urlImagenBD;
+        $nombreImagen = str_replace('public/docentes/','\storage\docentes\\',$urlImagenBD);
+        $rutaCompleta = public_path().$nombreImagen;
+        //return $rutaCompleta;
+        //unlink($rutaCompleta);
+        //$doc->delete();
+        return 'Eliminado epikamente';
     }
 }

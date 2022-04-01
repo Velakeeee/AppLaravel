@@ -17,6 +17,8 @@
                 <img style="height: 10rem; width: 17.9rem" src="{{Storage::url($alias->imagen)}}" class="card-img-top mx-auto d-block" alt="...">
                     <div class="card-body">
                     <h5 class="card-title">{{$alias->nombre}}</h5>
+                    <h5 class="card-title">{{$alias->horas}}</h5>
+
                     {{--Se necesita el id para ver un registro en particular--}}
                     <a href="/cursos/{{$alias->id}}" class="btn btn-primary">Ver mas</a>
                     </div>

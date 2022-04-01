@@ -14,6 +14,15 @@
         <p class="card-text"><b>Curso Asociado:</b> {{$doc->cursoAsociado}}</p>
     </div>
     <a href="/docentes/{{$doc->id}}/edit" class="btn btn-primary">Editar info de docente</a>
+    <br>
+    <br>
+
+
+    <form class="form-group" action="/docentes/{{$doc->id}}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">--Eliminar--</button>
+    </form>
 </div>
 
 

@@ -8,7 +8,7 @@
 <h3>Editar curso</h3>
 <form action="/cursos/{{$cursito->id}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
-   
+
     @csrf
     <div class="form-group">
         <label for="nombrecurso">Editar Nombre del curso</label>
@@ -17,6 +17,10 @@
     <div class="form-group">
         <label for="descripcion">Editar Descripción del curso</label>
         <input name="descripcion" type="textarea" value="{{$cursito->descripcion}}" id="descripcion" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="horas">Editar horas</label>
+        <input name="horas" type="number" value="{{$cursito->horas}}" id="horas" class="form-control">
     </div>
     <div class="form-group">
         <label for="descripcion">Actualizar imagen</label>
